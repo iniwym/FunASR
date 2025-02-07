@@ -16,9 +16,10 @@ while true; do
 	echo "2. 启动Funasr服务"
 	echo "3. 音频转文字"
 	echo "4. 关闭Funasr服务"
+	echo "5. 分割长音频"
 
 	# 读取用户选择的脚本
-	read -p "请输入选项 (0/1/2/3/4): " choice
+	read -p "请输入选项 (0/1/2/3/4/5): " choice
 
 	# 根据选择执行相应的脚本并提示输入参数
 	case $choice in
@@ -47,7 +48,12 @@ while true; do
 		4)
 			echo "关闭Funasr服务中~"
 			sh "$SCRIPTS_PATH/stop_funasr_container.sh"
-			;;	
+			;;
+	  5)
+			echo "按照60分钟为单位进行分割"
+			read -p "请输入 输入目录: " input_dir_5
+			sh "$SCRIPTS_PATH/split_mp3.sh" "$input_dir_5"
+			;;
 		*)
 			echo "无效的选项~"
 			;;

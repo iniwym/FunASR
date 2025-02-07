@@ -42,7 +42,7 @@ fi
 
 # 运行Docker容器并附加启动服务脚本
 echo "Running Docker container..."
-docker run -d -p "$PORT:$PORT" --privileged=true \
+docker run -d -p "$PORT:$PORT" -it --privileged=true \
   -v "$MODELS_DIR":/workspace/models \
   --name "$CONTAINER_NAME" \
   "$FUNASR_IMAGE"
